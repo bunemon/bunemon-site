@@ -1,0 +1,674 @@
+
+/* 全体設定（色の定義） */
+:root {
+    --primary-color: #2d5a27; /* おかわかめ・野菜の深緑⇒メインカラー（見出し・強調部分に使う色） */
+    --accent-color: #8d6e63;  /* 古民家の木の色⇒線やフッターなどのアクセント */
+    --bg-color: #fdfaf5;      /* 柔らかな和紙色⇒ページ全体の背景色 */
+    --text-color: #333;       /* 普通の文字色（真っ黒じゃないので優しい） */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* body（ページ全体の基本設定） */
+body {
+    margin: 0; /* ブラウザ標準の余白を消す */
+    /* font-family: "Sawarabi Mincho", "Hiragino Mincho ProN", serif; （和風な明朝体を優先表示） */
+    font-family: "Zen Maru Gothic", "Meiryo", sans-serif;
+    background-color: var(--bg-color); /* 全体背景を和紙色に */
+    color: var(--text-color);
+    line-height: 1.8; /* 行間を広めにして読みやすく */
+    padding-top: var(--header-height, 0px);
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 500;
+}
+
+
+/* ヘッダー（上部メニュー） */
+header {
+    background: #fff;
+    display: flex; /* ロゴとナビを横並びに */
+    justify-content: space-between; /* 左右に配置 */
+    align-items: center;
+    padding: 0; /* ← ここ重要 */
+    position: fixed;
+    top: 0; /* スクロールしても上に固定 */
+    left: 0;
+    width: 100%; /* 中身の幅 */
+    z-index: 1000; /* 他の要素より前に表示 */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* うっすら影で浮かせる */
+    box-sizing: border-box; /* disply を fixed にした時に表面化するトラブルを解消 */
+    overflow-x: clip; /* ← 横ズレ完全防止 */
+}
+
+/* 芯になる箱 */
+.header-inner {
+    max-width: 1200px; /* 好みで調整 PCで広がりすぎない */
+    width: 100%; /* 端末に追従 */
+    margin: 0 auto;
+    padding: 0 16px;   /* これが超重要 スマホで左右に余白 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;   /* ← 上下 */
+    align-items: center;
+    gap: 12px;
+}
+
+/* ロゴ文字 */
+/* ロゴ全体を大きく */
+.logo {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+/* spanだけ色とサイズを変えてアクセント */
+.logo span {
+    font-size: 3.6rem;
+    color: var(--accent-color);
+}
+
+/* ナビゲーション（メニュー） */
+nav ul {
+/* 縦並びメニュー */
+/* 黒丸（・）を消している */
+    display: flex;
+    gap: 10px;   /* ボタンの間隔 */
+    list-style: none;
+    padding: 0;
+    margin: 0;}
+
+/* 左マージン */
+nav ul li {
+    margin-left: 20px;
+    margin: 3px;
+}
+
+nav a {
+    padding: 4px 15px;
+    border-radius: 8px;
+    display: block;             /* ブロック属性に変更 */
+    text-decoration: none;      /* 下線無し */
+    color: #333;
+    background-color: #d1c3c0;
+/* 落ち着いた文字色
+    text-decoration: none;　下線なし
+    color: var(--text-color);
+    font-size: 1.5rem; */
+}
+
+nav a:hover{                  /* マウスが重なった時に色が変わる  */
+    color: #fff;
+    background-color: #9e908c;
+    transform: translateY(-3px);
+}
+
+/* LINE予約ボタン専用の装飾 */
+.nav-line {
+    background: #d1c3c0; 
+    color: #333;
+    padding: 4px 15px;
+    border-radius: 8px;
+}
+
+/* ヒーローエリア（最初の大きな写真） */
+.hero {
+    height: 40vh; /* 画面高さの40% */
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+    url('img/hero.jpg') center / cover no-repeat; /* 写真の上に黒の半透明グラデーションを重ねて文字を見やすく */
+    background-color: #4a4a4a; /* 写真がない時の背景色 */
+    display: flex; /* 文字を上下左右ど真ん中に配置 */
+    align-items: center; /* 文字を上下左右ど真ん中に配置 */
+    justify-content: center; /* 文字を上下左右ど真ん中に配置 */
+    color: white;
+    text-align: center;
+    min-height: 80vh;  /* ← 40vh → 60vh に */    
+    padding: 60px 0;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.hero-content {
+    max-width: 900px;
+    padding: 0 20px;
+    animation: fadeUp 1.2s ease forwards;
+    opacity: 0;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1.2s ease forwards;
+}
+
+.hero h2 span {
+    display: block;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    line-height: 1.8;
+    letter-spacing: 0.08em;
+    opacity: 0.9;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    font-size: 1.5rem;
+    opacity: 0.7;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+
+@keyframes fadeUp {
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+
+/* .hero h1 { font-size: 2.3rem; margin-bottom: 10px; } */
+
+/* セクション共通設定 */
+.container { padding: 80px 10%; text-align: center; } /* 横幅を少し狭めて読みやすく, 余白たっぷり*/
+.bg-green { background-color: #f0f4ef; } /* セクションごとに背景色を変えたい時用 */
+
+/* セクションタイトル装飾 */
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* タイトル下の横線デザイン/和風・落ち着いた印象を作る重要パーツ */
+.section-title::after {
+    content: '';
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* CSS（モーダル用を統一） */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 2000;
+ /* display: flex; ← これが致命的 */
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;    
+}
+
+.modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: #fff;
+    animation: zoomIn 0.3s ease;
+}
+
+.modal-img {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card img {
+    cursor: pointer;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: 1fr;  /* ← 基本は1列 */ /* repeat(auto-fit, minmax(220px, 1fr)); */
+    gap: 15px;
+    max-width: 550px;   /* ← これが重要 */
+    margin: 30px auto 0;
+}
+
+.photo-grid img {
+    width: 100%;
+    /* height: 180px; */
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.photo-grid img:hover {
+    transform: scale(1.05);
+}
+
+.content-flex {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.text {
+    text-align: left;
+}
+
+.text img {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+    margin: 20px auto;
+}
+
+.text img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 8px;
+}
+/* グリッドとカード */
+/* 画面幅に応じて(PC：横並び,スマホ：縦並び)自動調整される便利な書き方 */
+/* 共通 */
+/* 共通 */
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.fixed-2col-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+/**
+.video-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.video-wrap video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+**/
+
+.movie-title {
+    margin-top: 60px;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+}
+
+.movie-wrap {
+    max-width: 750px;
+    margin: 20px auto 60px;
+}
+
+.movie-wrap video {
+    width: 100%;
+    border-radius: 14px;
+}
+
+/* アクセス専用 */
+#access .container {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+ 
+/* #access .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+} */
+
+/* Googleマップ レスポンシブ対応 */
+.map-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.map-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* 「体験」「特徴」などの箱デザイン */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 15px;
+    border-radius: 6px;
+}
+
+.card h3 { color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 10px; }
+
+.list-style { padding-left: 20px; font-size: 0.9rem; }
+
+/* LINEボタン */
+/* 丸みのある今風ボタン(アイコン＋文字を横並び) */
+.line-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #d1c3c0;
+    color: #333;
+    padding: 14px 26px;
+    border-radius: 50px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.line-btn:hover {
+    background-color: #9e908c;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* フッター */
+/* 木の色 × 白文字で締め */
+footer {
+    background: var(--accent-color);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.line-fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #d1c3c0;
+    color: #333;
+    padding: 14px 22px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.line-fixed:hover {
+    background-color: #9e908c;  
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* PC全画面の時だけ2列にする */
+/* 画面幅が1200px以上で2列 */
+
+@media (min-width: 1200px) {
+
+    .photo-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+.photo-grid img {
+    width: 100%;
+    aspect-ratio: 4 / 3;  /* 写真の縦横比揃う */
+    object-fit: cover;
+}
+
+.photo-grid:not(.single) img {
+    height: 180px;
+}
+
+.photo-grid.single img {
+    height: auto;
+}
+
+.photo-grid.single {
+    max-width: 750px;
+}
+
+.photo-grid img {
+    width: 100%;
+    height: auto !important;
+    object-fit: contain;
+}
+
+.madori-grid {
+    max-width: 900px;   /* 好きなサイズに */
+}
+
+.madori-grid img {
+    width: 100%;
+    height: auto;
+}
+
+.madori-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 900px;
+}
+
+}
+
+/* ===== お知らせ ===== */
+.news {
+    max-width: 800px;
+    margin: 120px auto;
+    padding: 0 20px;
+}
+
+.news h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.news ul {
+    list-style: none;
+    padding: 0;
+}
+
+.news li {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
+.news span {
+    display: inline-block;
+    width: 120px;
+    color: #888;
+}
+
+.news-list {
+    max-width: 380px;       /* スマホ幅くらいで止める */
+    margin: 0 auto;         /* 真ん中に配置 */
+    padding-left: 0;    /* 黒点の余白調整 */
+    text-align: left;       /* 中は左揃え */
+    line-height: 1.8;
+    list-style: none;
+}
+
+.news-list li {
+    margin-bottom: 10px;
+}
+
+.news-list span {
+    display: inline-block;
+    width: 110px;           /* 日付の幅を固定 */
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.news-list li::before {
+    content: "・";
+    color: var(--accent-color);
+    margin-right: 8px;
+}
+
+/* スマホ対応（超重要） */
+/* 画面幅が768px以下（スマホ）になったら適用 */
+@media (max-width: 768px) {
+
+        header {
+        font-size: 0.8rem;
+    }
+
+    .header-inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    .logo span {
+        font-size: 2.5rem;
+    }
+
+    .hero h1 span {
+        display: inline;
+    }
+
+    .nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+        nav a {
+        padding: 6px 10px;
+        font-size: clamp(0.75rem, 3vw, 0.9rem);
+        white-space: nowrap; /* 折り返し防止 */
+    }
+
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;          /* ← 超重要 */
+        justify-content: center;
+        gap: 6px 10px;            /* 縦 横 */
+    }
+
+    nav li {
+        flex: 0 1 auto;
+    }
+
+    nav a {
+        padding: 6px 10px;
+        font-size: clamp(0.75rem, 3vw, 0.9rem);
+        white-space: nowrap;
+    }
+
+    .grid {
+        grid-template-columns: 1fr; /* ← これが抜けている */
+    }
+
+    #access .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        max-width: 95%;
+        max-height: 85%;
+    }
+
+    .close {
+        font-size: 32px;
+        top: 10px;
+        right: 15px;
+    }
+
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }    
+
+}

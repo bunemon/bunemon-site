@@ -1,0 +1,346 @@
+
+<!DOCTYPE html> <!-- HTML5で書いてますよという宣言 -->
+<html lang="ja"> <!-- 日本語サイトですよ、という意味 -->
+<head> <!-- 画面には直接表示されない裏方情報ゾーン -->
+    <meta charset="UTF-8"> <!-- 日本語が文字化けしないようにする設定（超重要） -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- スマホ対応（これがないとスマホで崩れる） -->
+    <title>古民家民泊 文右衛門 | 離れ一棟貸しと自家製野菜の宿</title> <!-- ブラウザのタブに出る名前 Google検索結果のタイトルにも使われる -->
+    <link rel="stylesheet" href="style.css"> <!-- ここでCSSとHTMLがつながっている style.css に書いたデザインが全部反映される -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+<!---->
+    <header> <!-- ページ最上部のエリア -->
+        <div class="header-inner">
+            <h1 class="logo">古民家民泊 <span>文右衛門</span></h1> <!-- 宿の名前ロゴ部分 class="logo" → CSSで文字サイズや書体を装飾できる -->
+            <nav class="nav"> <!-- ナビゲーション（メニュー）専用タグ -->
+                <ul>
+                    <li><a href="#about">文右衛門</a></li> <!-- #about はページ内ジャンプ 下にある <section id="about"> にピョンと飛ぶ -->
+                    <li><a href="#facility">離れ紹介</a></li>
+                    <li><a href="#experience">田舎体験</a></li>
+                    <li><a href="#news">お知らせ</a></li>
+                    <li><a href="#access">アクセス</a></li>
+                    <li><a href="#contact" class="nav-line">お問合せ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero"> <!-- メインビジュアル（いちばん目立つところ）ファーストビュー 写真は CSSの background-image で入れる想定 -->
+        <div class="hero-content">
+            <h2>一日一組限定の離れ一棟貸し<br>
+                <span>心づくしの自家野菜と静かな時間</span>
+            </h2> <!-- ページで一番大事な見出し（Googleも「ここ重要！」と判断） -->
+            <p>京丹後市久美浜町で夫婦が営む古民家宿<br>
+               都会の喧騒から離れたい方、<br>
+               自然の中でゆっくり過ごしたいご夫婦やご家族におすすめです。</p>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <section id="about" class="container bg-green"> <!-- id="about" → メニューから飛ぶ先 class="container" → 横幅を整える箱 -->
+        <h2 class="section-title">文右衛門について</h2> <!-- 各章のタイトル CSSで共通デザインにできる -->
+        <div class="content-flex">
+            <div class="text">
+                <h3>民泊 文右衛門</h3>
+                <p>京丹後市久美浜町にある古民家民泊『文右衛門』。<br>
+                   一日一組限定、純和風家屋の離れ一棟貸しの宿です。<br>
+                   一棟貸しなので、気兼ねなく自分たちの静かな時間を楽しめます。</p><br>
+                <img src="img/hyoshiki.jpg" class="modal-img">
+                    <br>
+                <br>
+                <h3>特製「おかわかめ」､「赤菊芋」と旬の野菜</h3>
+                <p>ぼかし肥料を使って育てた自家栽培野菜や美味しいお米が提供できます。<br>
+                    海のわかめに似た不思議な食感の「おかわかめ」と<br>
+                    イヌリンを豊富に含む「赤菊芋」が当宿の一押し健康野菜。<br>
+                    どちらも栄養満点で食感も楽しいです。</p><br>
+                <img src="img/akakikuimo1.jpg" class="modal-img">
+
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="facility" class="container">
+        <h2 class="section-title">離れ一棟貸し・周辺情報</h2>
+        <div class="grid fixed-2col-grid">
+            <div class="card">
+                <h3>宿泊棟（離れ）</h3>
+                <p>一日一組限定の完全貸切。<br>
+                    誰にも邪魔されず、静かな時間をお過ごしいただけます。</p>
+                
+                <div class="photo-grid madori-grid">
+                <img src="img/madori.jpg" class="modal-img" alt="間取り図">
+                </div>
+
+            <h3 class="movie-title">1階の様子</h3>
+                <div class="movie-wrap">
+                <!--<video controls poster="img/hanare1.jpg">-->
+                <!--<video controls playsinline muted preload="img/hanare1.jpg">
+                        <source src="movie/hanare1.mp4" type="video/mp4">
+                    </video>-->
+                    <video controls playsinline muted poster="img/hanare1.jpg">
+                        <source src="movie/hanare1.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <h3 class="movie-title">水回りと2階</h3>
+                <div class="movie-wrap">
+                <!--<video controls poster="img/hanare2.jpg">-->
+                <!--<video controls playsinline muted preload="img/hanare2.jpg">
+                        <source src="movie/hanare2.mp4" type="video/mp4">
+                    </video>-->
+                    <video controls playsinline muted poster="img/hanare2.jpg">
+                        <source src="movie/hanare2.mp4" type="video/mp4">
+                    </video>                    
+                </div>
+                
+<!--
+                <div class="video-wrap">
+                <video controls>
+                    <source src="video/hanare1.mp4" type="video/mp4">
+                    お使いのブラウザは動画タグに対応していません。
+                </video>
+                <video controls>
+                    <source src="video/hanare2.mp4" type="video/mp4">
+                    お使いのブラウザは動画タグに対応していません。
+                </video>
+                </div>
+-->                
+                <ul class="list-style">
+                    <li>キッチン・シャワーユニット・Wi-Fi完備</li>
+                    <li>チェックイン 15:00 / アウト 10:00</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>周辺スポット</h3>
+                <p>近くにはゆったり浸かれる**天然温泉**や、<br>
+                    透明度抜群の**海水浴場**があります。<br>
+                    海と山の両方を満喫できます。<br><br>
+                        <a href="https://kumihama-spa.com/" target="_blank">久美浜温泉湯元館</a><br>
+                        <p>100%源泉かけ流しのナトリウム・カルシウム-塩化物泉</p>
+                        <a href="https://tantanonsen.com/" target="_blank">たんたん温泉 福寿の湯</a><br>
+                        <p>山の上にあるアルカリ泉質の「ラドン温泉」</p>
+                        <a href="https://www.uminokyoto.jp/feature/detail.php?spid=20" target="_blank">海の京都</a><br>
+                        <p>どこの海水浴場に行くか</p>
+                        <a href="https://xn--riq353b.com/tankentai/TK/kabutoyama.html" target="_blank">丹後探検隊（かぶと山）</a><br>
+                        <p>なぜ小天橋（小さい天橋立）と呼ばれるのか、かぶと山の展望台に行けば納得</p>
+                        <a href="https://www.inabahonke.com/" target="_blank">豪商 稲葉本家</a><br>
+                        <p>久美浜の地にて糀製造で得た富を背景に廻船業を営み、付近諸藩の金融を独占するほどだった豪商</p>
+                        <a href="https://nakisuna.jp/" target="_blank">琴引浜鳴き砂文化館</a><br>
+                        <p>なぜ鳴き砂は鳴くのか、世界で初めての鳴き砂をテーマにした体験学習施設</p>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="container bg-green">
+        <h2 class="section-title">ここでしかできない体験</h2>
+        <div class="experience-grid"> <!-- fixed-2col-grid（CSSで 横並び（カード型） にするための箱）-->
+            <div class="card"> <!-- 1つ1つの内容ブロック「体験」「宿泊棟」「周辺スポット」など全部これ -->
+                <h3>魚のもんどり仕掛け</h3>
+                <p>伝統的な魚罠である「もんどり」を仕掛けます。<br>
+                    どんな魚が捕れるか楽しみです！</p>
+                <div class="photo-grid">    
+                <img src="img/mondori1.JPG" class="modal-img">
+                <img src="img/mondori2.jpg" class="modal-img">
+                <img src="img/mondori3.jpg" class="modal-img">
+                </div>
+                
+            </div>
+            <div class="card">
+                <h3>本格 蕎麦打ち</h3>
+                <p>お二人で、あるいはご家族で。<br>
+                    自分たちで作った、打ちたて、湯がきたての蕎麦の味は絶品です。</p>
+                <div class="photo-grid">
+                <img src="img/soba1.JPG" class="modal-img">
+                <img src="img/soba2.jpg" class="modal-img">
+                <img src="img/soba3.JPG" class="modal-img">
+                </div>
+                
+            </div>
+            <div class="card">
+                <h3>野菜の収穫体験</h3>
+                <p>農薬や化学肥料を使用しない有機栽培で育てた野菜を畑で収穫。<br>
+                    その瑞々しさに驚かれるはずです。</p>
+                <div class="photo-grid">
+                <img src="img/yasai1.JPG" class="modal-img">
+                <img src="img/yasai2.JPG" class="modal-img">
+                <img src="img/yasai3.JPG" class="modal-img">
+                <img src="img/yasai4.JPG" class="modal-img">
+                <img src="img/yasai5.jpg" class="modal-img">
+                <img src="img/yasai6.jpg" class="modal-img">
+                <img src="img/yasai7.jpg" class="modal-img">
+                <img src="img/yasai8.jpg" class="modal-img">
+                <img src="img/yasai9.jpg" class="modal-img">
+                <img src="img/yasai10.jpg" class="modal-img">
+                <img src="img/yasai11.jpg" class="modal-img">
+                <img src="img/yasai12.jpg" class="modal-img">
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="container">
+        <h2 class="section-title">お知らせ</h2>
+        <div class="content-flex">
+            <div class="text">
+            <h3>最新情報</h3>
+                <ul class="news-list">
+                    <li><span>2026.08.09 </span> 千日会観光祭<br>
+                    </li>
+                    <li><span>2026.10.10ｰ11 </span> 神谷太刀宮神社氏神祭（秋祭り）<br>
+                    </li>
+                    <br>
+                    <p>※ 詳細はLINEにてお気軽にお問い合わせください。</p>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">    
+        <section id="access" class="container bg-green">
+            <h2 class="section-title">アクセス</h2>
+            <div class="grid fixed-2col-grid">
+
+                <div class="card">
+                    <h3>周辺地図</h3>
+                    <div class="map-wrap">
+                        <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.338357131237!2d134.9689105765142!3d35.57003957262346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5fffbf77f20455ff%3A0x3d9218d5638cde4a!2z44CSNjI5LTM1NjUg5Lqs6YO95bqc5Lqs5Li55b6M5biC5LmF576O5rWc55S65bCP5qGR77yW77yV77yU!5e0!3m2!1sja!2sjp!4v1767969972304!5m2!1sja!2sjp"
+                        allowfullscreen
+                        loading="lazy">
+                        </iframe>
+                    </div>
+                    <p>住所：〒629-3565 京都府京丹後市久美浜町小桑654</p>
+                </div>
+
+                <div class="card">
+                    <h3>お車でお越しの方</h3>
+                    <p>
+                        京丹後大宮ICから京都縦貫自動車道を降り、国道312号を久美浜•豊岡方面へ約25分。<br>
+                        比治山トンネルを抜け、三つ目の信号（小桑口）を左折。<br>
+                        集落内中ごろ右手の赤瓦の家になります。
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>電車・バスでお越しの方</h3>
+                    <p>
+                        JR西日本 福知山駅あるいは豊岡駅から京都丹後鉄道に乗り換える。<br>
+                        <br>
+                        京都丹後鉄道：久美浜駅下車の場合<br>
+                        丹海バス（久美浜線）　久美浜駅 乗車 ⇒ 小桑口 下車　（所要時間 20分）<br>
+                        <br>
+                        京都丹後鉄道：峰山駅下車の場合<br>
+                        丹海バス（久美浜線）　峰山駅 乗車 ⇒ 小桑口 下車　（所要時間 25分）<br>
+                        <br>
+                        丹海バス<br>
+                            <a href="https://www.tankai.jp/routebus/timetable/?id=18352" target="_blank">久美浜線時刻表</a><br>
+                        <br>小桑口バス停下車後、八幡橋を渡って道なりに歩いた先の集落内中ごろ右手の赤瓦の家になります。（およそ徒歩10分）
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>高速バスでお越しの方</h3>
+                    <p>
+                            <a href="https://www.tankai.jp/highwaybus/" target="_blank">高速バス利用案内</a><br>
+                        <br>
+                            京都駅から<br>
+                            <a href="https://www.tankai.jp/highwaybus/kyotoline/" target="_blank">高速バス京都線/予約・時刻表</a><br>
+                        終点『丹海峰山車庫』で丹海バス（久美浜線）に乗り換え、小桑口で下車<br>
+                        <br>
+                        大阪駅から<br>
+                            <a href="https://www.tankai.jp/highwaybus/osakaline/" target="_blank">高速バス大阪線/予約・時刻表</a><br>
+                        終点『丹海峰山車庫』で丹海バス（久美浜線）に乗り換え、小桑口で下車<br>
+                        <br>
+                        丹海バス<br>
+                            <a href="https://www.tankai.jp/routebus/timetable/?id=18352" target="_blank">久美浜線時刻表</a><br>
+                        <br>小桑口バス停下車後、八幡橋を渡って道なりに歩いた先の集落内中ごろ右手の赤瓦の家になります。（およそ徒歩10分）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="container">
+            <h2 class="section-title">ご予約・お問合せ</h2>
+
+            <a href="https://page.line.me/166hjhad" class="line-btn" target="_blank">
+                <!-- ここが 予約ボタン 上記の URLは仮IDなので、公開前には必ず実際の LINE公式アカウントID（@xxxx） に変更すること!! @yourid を本物のLINE公式IDに変えれば即完成 -->
+                <img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="LINEで追加" width="100"> <!-- → LINEロゴを表示（外部URLなので画像フォルダ不要） -->
+                文右衛門をLINE友だち追加
+            </a>
+            <h3>ご予約・お問合せ</h3>
+            <p> 空き状況のご確認や利用に際してのご相談は、LINE公式アカウントから承ります。
+            <br>LINEボタンを押していただき文右衛門を友達に追加したうえで、｢HPを見た｣と
+            <br>お気軽にメッセージをお送りください。
+            <h3>宿泊料金</h3>
+                ※ お申込み人数 2名様～（人数はご相談に応じます）
+            <br>一泊二食　　12,000円（1名様）
+            <br>宿泊のみ　　 7,000円（1名様）
+            <br>食事をご希望の場合は、食材の準備の都合上LINEにてご相談させてください。
+            <br>キャンセルポリシー：到着6日前～前日まで 50%・当日 100%</p>
+
+            <h3>その他</h3>
+                <ul class="news-list">
+                    <li>チェックイン 15：00～</li>
+                    <li>到着が15:00前になる場合はご連絡ください</li>
+                    <li>チェックアウト 10：00～</li>
+        </section>
+
+    <footer>
+        <p>&copy; 2026 古民家民泊 文右衛門</p>
+    </footer>
+
+    <script>
+        function setScrollOffset() {
+        const header = document.querySelector('header');
+        const h = header.offsetHeight;
+
+        document.documentElement.style.scrollPaddingTop = h + 'px';
+        document.body.style.paddingTop = h + 'px';
+        }
+        window.addEventListener('load', setScrollOffset);
+        window.addEventListener('resize', setScrollOffset);
+    </script>
+
+<!-- JavaScript（今ある modal を使う） -->
+
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImage");
+    const closeBtn = document.querySelector(".close");
+
+    document.querySelectorAll(".modal-img").forEach(img => {
+        img.addEventListener("click", () => {
+            modal.classList.add("active");
+            modalImg.src = img.src;
+        });
+    });
+
+    closeBtn.addEventListener("click", () => {
+        modal.classList.remove("active");
+        modalImg.src = "";
+    });
+
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("active");
+            modalImg.src = "";
+        }
+    });
+    </script>    
+
+<a href="https://page.line.me/166hjhad" class="line-fixed" target="_blank">
+    LINEでお問合せ
+</a>
+
+</body>
+</html>
